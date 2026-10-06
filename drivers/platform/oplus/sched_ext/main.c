@@ -15,36 +15,36 @@
 #define LOAD_TRACK_DIR          "slim_walt"
 #define HMBIRD_PROC_PERMISSION  0666
 
-int scx_enable = 1;
-int partial_enable;
-int cpuctrl_high_ratio = 55;
-int cpuctrl_low_ratio = 40;
-int slim_stats;
+int scx_enable = 0;                         /* 0: Zamanlama BORE/WARP'a bırakıldı, SCX katmanı kapatılarak işlemci yükü azaltıldı */
+int partial_enable = 0;
+int cpuctrl_high_ratio = 60;                /* 60: Erken ve gereksiz frekans sıçramalarını engeller */
+int cpuctrl_low_ratio = 45;
+int slim_stats = 0;                         /* 0: Arka plan istatistik takibi kapatıldı */
 int hmbirdcore_debug = 0;
-int slim_for_app;
+int slim_for_app = 1;                       /* 1: Yük takibini ön plandaki uygulamalara odaklayarak arka planı kısıtlar */
 int misfit_ds = 90;
-unsigned int highres_tick_ctrl = 1;
-unsigned int highres_tick_ctrl_dbg;
-int cpu7_tl = 70;
+unsigned int highres_tick_ctrl = 0;         /* 0: İşlemci çekirdeklerinin derin uykulara (C-State) geçmesine izin verir */
+unsigned int highres_tick_ctrl_dbg = 0;
+int cpu7_tl = 75;                           /* 75: Prime (en büyük) çekirdeğe gereksiz küçük görevlerin girmesini engeller */
 int slim_walt_ctrl = 1;
-int slim_walt_dump;
-int slim_walt_policy;
-int slim_gov_debug;
-int scx_gov_ctrl = 1;
-int sched_ravg_window_frame_per_sec = 125;
-int parctrl_high_ratio = 55;
-int parctrl_low_ratio = 40;
-int parctrl_high_ratio_l = 65;
-int parctrl_low_ratio_l = 50;
-int isoctrl_high_ratio = 75;
-int isoctrl_low_ratio = 60;
-int isolate_ctrl;
-int iso_free_rescue;
-int heartbeat;
-int heartbeat_enable = 1;
-int watchdog_enable;
-int save_gov;
-unsigned int cpu_cluster_masks;
+int slim_walt_dump = 0;
+int slim_walt_policy = 0;
+int slim_gov_debug = 0;
+int scx_gov_ctrl = 0;                       /* 0: SCX kapalı olduğu için governor kontrol yükü kaldırıldı */
+int sched_ravg_window_frame_per_sec = 90;   /* 90: 125 FPS'lik pil düşmanı pencere yerine 90 FPS dengeli pencereye çekildi */
+int parctrl_high_ratio = 60;
+int parctrl_low_ratio = 45;
+int parctrl_high_ratio_l = 70;
+int parctrl_low_ratio_l = 55;
+int isoctrl_high_ratio = 80;
+int isoctrl_low_ratio = 65;
+int isolate_ctrl = 0;
+int iso_free_rescue = 0;
+int heartbeat = 0;
+int heartbeat_enable = 0;                   /* 0: Arka planda periyodik uykudan uyandıran tarama kapatıldı */
+int watchdog_enable = 0;
+int save_gov = 0;
+unsigned int cpu_cluster_masks = 0;
 
 char saved_gov[NR_CPUS][16];
 
